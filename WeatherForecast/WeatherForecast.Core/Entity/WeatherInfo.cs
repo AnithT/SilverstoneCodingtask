@@ -9,7 +9,9 @@ namespace WeatherForecast.Core.Entity
     public class WeatherInfo
     {
         public string LocationName { get; set; }
-        public double Temperature { get; set; }
+        public double Current_temperature { get; set; }
+        public double Minimum_temperature { get; set; }
+        public double Maximum_temperature { get; set; }
         public int Humidity { get; set; }
         public DateTime Sunrise { get; set; }
         public DateTime Sunset { get; set; }
