@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace WeatherForecast.Core.Entity
 {
-    public class WeatherInfo
+    public class WeatherInfo : User
     {
         public string LocationName { get; set; }
         public double Current_temperature { get; set; }

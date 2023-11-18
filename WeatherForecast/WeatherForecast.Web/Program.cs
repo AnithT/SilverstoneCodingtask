@@ -1,4 +1,7 @@
+using Microsoft.EntityFrameworkCore;
 using WeatherForecast.Core.Interfaces;
+using WeatherForecast.Infrastructure.Data;
+using WeatherForecast.Infrastructure.Repositories;
 using WeatherForecast.Infrastructure.Services;
 
 namespace WeatherForecast.Web
@@ -21,8 +24,10 @@ namespace WeatherForecast.Web
 
             // Add services to the container.
             //builder.Services.AddRazorPages();
+            builder.Services.AddDbContext<WeatherForecastContext>(option => option.UseInMemoryDatabase(builder.Configuration.GetConnectionString("WeatherInfoDb")));
             builder.Services.AddControllers();
             builder.Services.AddScoped<IWeatherService, WeatherService>();
+            builder.Services.AddScoped<IWeatherRepository, WeatherRepository>();
             builder.Services.AddEndpointsApiExplorer();
             builder.Services.AddSwaggerGen();
             var app = builder.Build();

@@ -7,10 +7,9 @@ using WeatherForecast.Core.Entity;
 
 namespace WeatherForecast.Core.Interfaces
 {
-    public interface IWeatherService
+    public interface IWeatherRepository
     {
-        Task<WeatherInfo> GetWeatherInfoAsync(string location);
         Task<WeatherInfo> CreateAsync(WeatherInfo entity);
-        Task <IEnumerable<WeatherInfo>> GetWeatherInfoByUser(int userId);
+        Task <IEnumerable<WeatherInfo>> GetByIdAsync(int Id);
     }
 }

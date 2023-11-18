@@ -15,6 +15,22 @@ namespace WeatherForecast.Infrastructure.Services
     {
         private readonly string apiKey = "d73721e68ee7449e9d4135327231711"; // Replace with your OpenWeatherMap API key
         private readonly string apiUrl = "http://api.weatherapi.com/v1/forecast.json";
+        private readonly IWeatherRepository _weatherRepository;
+
+        public WeatherService(IWeatherRepository weatherRepository)
+        {
+            _weatherRepository = weatherRepository;
+        }
+
+        public async Task<WeatherInfo> CreateAsync(WeatherInfo entity)
+        {
+            return await _weatherRepository.CreateAsync(entity);
+        }
+        public async Task <IEnumerable<WeatherInfo>> GetWeatherInfoByUser(int userId)
+        {
+            return await _weatherRepository.GetByIdAsync(userId);
+        }
+
         public async Task<WeatherInfo> GetWeatherInfoAsync(string location)
         {
             // Constructing the API request URL
