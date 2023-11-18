@@ -52,8 +52,8 @@ namespace WeatherForecast.Infrastructure.Services
             }
             else
             {
-                // Handle API request failure (e.g., log the error, throw an exception)
-                throw new ApplicationException($"Failed to retrieve weather data. Status Code: {response.StatusCode}, Error: {response.ErrorMessage}");
+                var exceptionData = JsonConvert.DeserializeObject<WeatherApiException>(response.Content);
+                throw new Exception($"{exceptionData.Error.Message}");
             }
         }
         private WeatherInfo MapToWeatherInfo(OpenWeatherMapResponse weatherData)

@@ -1,6 +1,7 @@
 using Microsoft.EntityFrameworkCore;
 using WeatherForecast.Core.Interfaces;
 using WeatherForecast.Infrastructure.Data;
+using WeatherForecast.Infrastructure.ExceptionMiddlewareHandler;
 using WeatherForecast.Infrastructure.Repositories;
 using WeatherForecast.Infrastructure.Services;
 
@@ -31,6 +32,7 @@ namespace WeatherForecast.Web
             builder.Services.AddEndpointsApiExplorer();
             builder.Services.AddSwaggerGen();
             var app = builder.Build();
+            app.UseMiddleware<ExceptionMiddleware>();
 
             // Configure the HTTP request pipeline.
             if (!app.Environment.IsDevelopment())

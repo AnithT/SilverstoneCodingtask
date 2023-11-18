@@ -18,15 +18,10 @@ namespace WeatherForecast.Web.Controllers
         [HttpGet]
         public async Task<IActionResult> GetWeatherInfo(string location)
         {
-            try
-            {
+           
                 var weatherInfo = await _weatherService.GetWeatherInfoAsync(location);
                 return Ok(weatherInfo);
-            }
-            catch (Exception ex)
-            {
-                return StatusCode(500, "Internal Server Error");
-            }
+           
         }
 
         [HttpPost]
