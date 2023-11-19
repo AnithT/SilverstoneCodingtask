@@ -1,4 +1,6 @@
-﻿using Newtonsoft.Json;
+﻿using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.Extensions.Options;
+using Newtonsoft.Json;
 using RestSharp;
 using System;
 using System.Collections.Generic;
@@ -13,13 +15,13 @@ namespace WeatherForecast.Infrastructure.Services
 {
     public class WeatherService : IWeatherService
     {
-        private readonly string apiKey = "d73721e68ee7449e9d4135327231711"; // Replace with your OpenWeatherMap API key
-        private readonly string apiUrl = "http://api.weatherapi.com/v1/forecast.json";
         private readonly IWeatherRepository _weatherRepository;
+        private readonly WeatherApiOptions _weatherApiOptions;
 
-        public WeatherService(IWeatherRepository weatherRepository)
+        public WeatherService(IWeatherRepository weatherRepository, IOptions<WeatherApiOptions> weatherApiOptions)
         {
             _weatherRepository = weatherRepository;
+            _weatherApiOptions = weatherApiOptions.Value;
         }
 
         public async Task<WeatherInfo> CreateAsync(WeatherInfo entity)
@@ -34,7 +36,7 @@ namespace WeatherForecast.Infrastructure.Services
         public async Task<WeatherInfo> GetWeatherInfoAsync(string location)
         {
             // Constructing the API request URL
-            var apiUrlWithParams = $"{apiUrl}?key={apiKey} &q={location}&days=1&aqi=no&alerts=no";
+            var apiUrlWithParams = $"{_weatherApiOptions.ApiUrl}?key={_weatherApiOptions.ApiKey} &q={location}&days=1&aqi=no&alerts=no";
 
             // Using RestSharp to make the API request
             var client = new RestClient(apiUrlWithParams);
