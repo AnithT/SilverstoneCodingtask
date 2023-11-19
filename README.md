@@ -13,6 +13,8 @@ When a user enters the invalid location, it will show error message above text f
 
 **Database** – In-memory(EntityFrameworkCore.InMemory package)
 
+**API Documentation** – Swagger
+
  
 # Architecture 
 
@@ -26,7 +28,7 @@ This .NET MVC project have been developed following Clean architecture, which co
 
 - WeatherForecast.Unit_test - The unit testing scenarios are developed in this layer
 
-- WeatherForecast.UI - Contains all the UI part of this web application.
+- WeatherForecast.UI - Contains all the UI part of this web application. The UI part is built using React framework and have used React functionalitites like hooks such as usestate, useeffect and AXIOS service for fetching APIs.
 
  # Commits
  
