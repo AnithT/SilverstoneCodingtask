@@ -7,9 +7,9 @@ When a user enters the invalid location, it will show error message above text f
  
 # Technologies used       
 
-**Backend** – C#.net (.NET 7), .NET core  ,EF Core(ver - 7) , XUnit , Moq 
+**Backend** – C#.net (.NET 7), .NET core  ,EF Core(ver - 7) , XUnit , Moq , REST APIs
 
-**Frontend** – React Framework(ver 18), Material UI(MAUI) 
+**Frontend** – React Framework(ver 18), Material UI
 
 **Database** – In-memory(EntityFrameworkCore.InMemory package)
 
@@ -72,6 +72,12 @@ Commit 5
 Commit 6 
 
  - UI changes created using React and Material UI.
+
+# APIs
+  All the backend database operations are done through Rest APIs, which will be more flexible to be used with any UI frameworks.There are three APIs used in this web application
+  1. Get weather details - '/api/Weather?location=London'
+  2. Post weather details - '/api/Weather'
+  3. Get search history of the user - '/api/Weather/User?id=1'
 
 # Unit Test
 
